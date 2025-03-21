@@ -1,0 +1,17 @@
+{
+	"name": "Chicago_grouped_data",
+	"properties": {
+		"content": {
+			"query": "-- This is auto-generated code\nSELECT TOP 5 category, COUNT(status)\nFROM\n    OPENROWSET(\n        BULK     'https://azureopendatastorage.blob.core.windows.net/citydatacontainer/Safety/Release/city=Chicago/*.parquet',\n        FORMAT = 'parquet'\n    ) AS [result]\n    GROUP BY category\n    ORDER BY COUNT(status) DESC ;",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "master",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

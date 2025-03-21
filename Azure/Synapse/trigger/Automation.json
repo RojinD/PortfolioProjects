@@ -1,0 +1,33 @@
+{
+	"name": "Automation",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "Pipeline 1",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2025-03-12T12:20:00",
+				"endTime": "2025-03-13T12:20:00",
+				"timeZone": "W. Europe Standard Time",
+				"schedule": {
+					"minutes": [
+						59
+					],
+					"hours": [
+						23
+					]
+				}
+			}
+		}
+	}
+}

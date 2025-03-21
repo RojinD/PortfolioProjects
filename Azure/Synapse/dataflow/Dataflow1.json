@@ -1,0 +1,47 @@
+{
+	"name": "Dataflow1",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"linkedService": {
+						"referenceName": "AzureSqlDatabase1",
+						"type": "LinkedServiceReference"
+					},
+					"name": "source1",
+					"description": "Add source dataset"
+				}
+			],
+			"sinks": [
+				{
+					"linkedService": {
+						"referenceName": "AzureBlobStorage1",
+						"type": "LinkedServiceReference"
+					},
+					"name": "tocsv"
+				}
+			],
+			"transformations": [],
+			"scriptLines": [
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'query',",
+				"     store: 'sqlserver',",
+				"     query: '  SELECT FirstName, LastName, cu.ID, MONTH(OrderDate) AS Months ,SUM(TotalAmount) AS SumofAmount\\n  FROM [dbo].[Customer] cu\\n  JOIN [dbo].[Order]   ord\\n  ON cu.Id = ord.customerId\\n  GROUP BY FirstName, LastName, cu.ID, MONTH(OrderDate) \\n  ',",
+				"     isolationLevel: 'READ_UNCOMMITTED') ~> source1",
+				"source1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'delimited',",
+				"     container: 'abblob',",
+				"     folderPath: (concat('MothlyReport', toString(currentDate()))),",
+				"     columnDelimiter: ',',",
+				"     escapeChar: '\\\\',",
+				"     quoteChar: '\\\"',",
+				"     columnNamesAsHeader: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> tocsv"
+			]
+		}
+	}
+}

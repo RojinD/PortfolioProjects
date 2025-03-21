@@ -1,0 +1,17 @@
+{
+	"name": "DestinationDataset_qm6",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "staging",
+			"table": "landdata"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

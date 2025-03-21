@@ -1,0 +1,24 @@
+{
+	"name": "DestinationDataset_wpz",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorageadf",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "csv file staging data",
+				"container": "adfblobstorage"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

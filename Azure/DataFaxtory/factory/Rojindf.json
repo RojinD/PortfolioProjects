@@ -1,0 +1,9 @@
+{
+	"name": "Rojindf",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "37448f9e-212b-4f73-9c42-4ed4523ab701",
+		"tenantId": "e4a9a180-4070-4978-929a-a08c722cb78e"
+	}
+}
